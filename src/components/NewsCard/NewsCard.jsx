@@ -1,20 +1,25 @@
-const NewsCard = () => {
+import { Link } from "react-router-dom";
+
+const NewsCard = ({ blog }) => {
+  const { title, photo_url, id, author, category, content } = blog;
+
+  console.log(photo_url);
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-80 bg-base-100 shadow-xl mx-3 max-w-sm my-3">
       <figure>
-        <img
-          src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          alt="Shoes"
-        />
+        <img src={`${photo_url}`} alt="Shoes" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
-          Shoes!
-          <div className="badge badge-secondary">NEW</div>
+          <Link to={`/blogs/${id}`} className="hover:text-orange-500">
+            {title}
+          </Link>
+
+          <div className="badge badge-secondary">BLOG</div>
         </h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <p>{content.slice(0, 35)}</p>
         <div className="card-actions justify-end">
-          <div className="badge badge-outline">Fashion</div>
+          <div className="badge badge-outline">{category}</div>
           <div className="badge badge-outline">Products</div>
         </div>
       </div>
