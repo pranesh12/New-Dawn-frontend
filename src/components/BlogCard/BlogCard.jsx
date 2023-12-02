@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 
-const NewsCard = ({ blog }) => {
-  const { title, photo_url, id, author, category, content } = blog;
+const BlogCard = ({ blog }) => {
+  const { title, image, id, author, category, content } = blog;
 
-  console.log(photo_url);
   return (
     <div className="card w-80 bg-base-100 shadow-xl mx-3 max-w-sm my-3">
       <figure>
-        <img src={`${photo_url}`} alt="Shoes" />
+        <img src={`${image}`} alt="Shoes" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
@@ -27,4 +26,4 @@ const NewsCard = ({ blog }) => {
   );
 };
 
-export default NewsCard;
+export default BlogCard;
