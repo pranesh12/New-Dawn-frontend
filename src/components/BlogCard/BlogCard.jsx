@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const BlogCard = ({ blog }) => {
-  const { title, image, id, author, category, content } = blog;
+  const { title, image, _id, author, category, content } = blog;
 
   return (
     <div className="card w-80 bg-base-100 shadow-xl mx-3 max-w-sm my-3">
@@ -10,7 +10,7 @@ const BlogCard = ({ blog }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">
-          <Link to={`/blogs/${id}`} className="hover:text-orange-500">
+          <Link to={`/blogs/${_id}`} className="hover:text-orange-500">
             {title}
           </Link>
 

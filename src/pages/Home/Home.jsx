@@ -5,7 +5,6 @@ const Home = () => {
   return (
     <div className="mt-1 container mx-auto">
       <Hero />
-
       <Blogview />
     </div>
   );

@@ -1,10 +1,15 @@
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="navbar bg-base-100  top-0 ">
       <div className="flex-1">
-        <a className="btn btn-ghost text-lg">Blog Site</a>
-        <a className="btn btn-ghost text-sm"></a>
-        <a className="btn btn-ghost text-sm">Blog Site</a>
+        <Link to="/" className="btn btn-ghost text-lg">
+          Blog Site
+        </Link>
+
+        <Link to="/auth/register" className="btn btn-ghost text-sm">
+          Auth
+        </Link>
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">

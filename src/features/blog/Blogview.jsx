@@ -6,7 +6,6 @@ import BlogCard from "../../components/BlogCard/BlogCard";
 const Blogview = () => {
   const dispatch = useDispatch();
   const { isLoading, blogs, error } = useSelector(selectAllBlogs);
-  console.log(blogs);
   useEffect(() => {
     dispatch(fetchBlogs());
   }, [dispatch]);
