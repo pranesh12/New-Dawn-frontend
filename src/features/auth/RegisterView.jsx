@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "./authSlice";
+import { Link } from "react-router-dom";
 
 const RegisterView = () => {
+  const dispatch = useDispatch();
+  const userdata = useSelector((state) => console.log(state));
+  const [registerData, setRegisterData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("working");
+    dispatch(registerUser(registerData));
+  };
+
+  const handleOnChange = (e) => {
+    setRegisterData({ ...registerData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -11,30 +25,25 @@ const RegisterView = () => {
       <div className="flex">
         <div className="basis-1/2"></div>
         <div className="basis-1/2">
-          <h2>New Account</h2>
-          <p>Already have an account?</p>
           <form onSubmit={handleSubmit}>
             <input
+              onChange={handleOnChange}
               type="text"
-              name="fistname"
-              placeholder="First Name"
+              name="name"
+              placeholder="Name"
               className="input input-bordered w-full max-w-xs  mb-4  input-info"
             />
             <input
-              type="text"
-              name="lastname"
-              placeholder="Last Name"
-              className="input input-bordered w-full max-w-xs mb-4 input-info"
-            />
-            <input
+              onChange={handleOnChange}
               type="email"
               name="email"
               placeholder="Email"
               className="input input-bordered w-full max-w-xs mb-4 input-info"
             />
             <input
+              onChange={handleOnChange}
               type="password"
-              name="email"
+              name="password"
               placeholder="Password"
               className="input input-bordered w-full max-w-xs mb-4 input-info"
             />

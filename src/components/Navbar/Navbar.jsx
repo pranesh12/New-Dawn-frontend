@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Navbar = () => {
+  const user = useSelector((state) => state.auth.currentUser);
+
   return (
     <div className="navbar bg-base-100  top-0 ">
       <div className="flex-1">
@@ -7,7 +10,7 @@ const Navbar = () => {
           Blog Site
         </Link>
 
-        <Link to="/auth/register" className="btn btn-ghost text-sm">
+        <Link to="/auth/login" className="btn btn-ghost text-sm">
           Auth
         </Link>
       </div>
@@ -34,13 +37,7 @@ const Navbar = () => {
           </div>
           <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
             <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
+              <a>{user.name}</a>
             </li>
             <li>
               <a>Logout</a>
