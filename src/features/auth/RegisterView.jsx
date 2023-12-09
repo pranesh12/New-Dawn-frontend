@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "./authSlice";
 import { Link } from "react-router-dom";
+import signupImg from "../../assets/signup.jpg";
 
 const RegisterView = () => {
   const dispatch = useDispatch();
-  const userdata = useSelector((state) => console.log(state));
   const [registerData, setRegisterData] = useState({
     name: "",
     email: "",
@@ -22,9 +22,15 @@ const RegisterView = () => {
 
   return (
     <div className="container mx-auto mt-5 prose">
-      <div className="flex">
-        <div className="basis-1/2"></div>
-        <div className="basis-1/2">
+      <div className="flex ">
+        <div className="">
+          <h2>Register</h2>
+          <p>
+            Don't have an account?
+            <Link to="/auth/login">
+              <span className="text-sky-600">Go to Login</span>
+            </Link>
+          </p>
           <form onSubmit={handleSubmit}>
             <input
               onChange={handleOnChange}

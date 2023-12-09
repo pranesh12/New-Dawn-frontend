@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "./authSlice";
+import { Link } from "react-router-dom";
 
 const LoginView = () => {
   const dispatch = useDispatch();
@@ -21,10 +22,15 @@ const LoginView = () => {
   return (
     <div className="container mx-auto mt-5 prose">
       <div className="flex">
-        <div className="basis-1/2"></div>
-        <div className="basis-1/2">
-          <h2>New Account</h2>
-          <p>Already have an account?</p>
+        <div className="">
+          <h2>Log in </h2>
+          <p>
+            Already have an account?{" "}
+            <Link to="/auth/register">
+              <span className="text-sky-600">Go to Register</span>
+            </Link>
+          </p>
+
           <form onSubmit={handleSubmit}>
             <input
               onChange={handleOnChange}
