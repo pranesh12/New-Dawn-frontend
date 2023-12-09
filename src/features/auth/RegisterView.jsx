@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "./authSlice";
 import { Link } from "react-router-dom";
-import signupImg from "../../assets/signup.jpg";
 
 const RegisterView = () => {
   const dispatch = useDispatch();

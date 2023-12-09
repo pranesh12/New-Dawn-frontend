@@ -9,6 +9,7 @@ const initialState = {
   currentUser,
   isLoading: false,
   error: null,
+  userList: [],
 };
 
 export const registerUser = createAsyncThunk(
@@ -28,6 +29,11 @@ export const loginUser = createAsyncThunk(
     return res.data;
   }
 );
+
+export const getAllUser = createAsyncThunk("auth/getAllUser", async (email) => {
+  const res = await axios.get(url + `allusers?email=${email}`);
+  return res.data;
+});
 
 export const authSlice = createSlice({
   name: "auth",
@@ -65,6 +71,19 @@ export const authSlice = createSlice({
     });
 
     builder.addCase(loginUser.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+
+    builder.addCase(getAllUser.pending, (state) => {
+      state.isLoading = true;
+    });
+
+    builder.addCase(getAllUser.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.userList = action.payload;
+    });
+
+    builder.addCase(getAllUser.rejected, (state, action) => {
       state.error = action.payload;
     });
   },

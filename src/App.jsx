@@ -5,8 +5,11 @@ import Home from "./pages/Home/Home";
 import SingleBlogDetails from "./features/blog/SingleBlogDetails";
 import LoginView from "./features/auth/LoginView";
 import RegisterView from "./features/auth/RegisterView";
-import Admin from "./pages/Admin/Admin";
+
 import AdminLayout from "./components/Layout/AdminLayout";
+import AdminHome from "./features/Admin/AdminHome";
+import BlogList from "./features/Admin/BlogList";
+import UserList from "./features/Admin/UserList";
 
 function App() {
   const router = createBrowserRouter([
@@ -38,7 +41,15 @@ function App() {
       children: [
         {
           path: "/admin",
-          element: <Admin />,
+          element: <AdminHome />,
+        },
+        {
+          path: "/admin/userlist",
+          element: <UserList />,
+        },
+        {
+          path: "/admin/bloglist",
+          element: <BlogList />,
         },
       ],
     },
