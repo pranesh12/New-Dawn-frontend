@@ -29,33 +29,36 @@ const UserList = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => {
-              return (
-                <>
-                  <tr>
-                    <th>1</th>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td
-                      className={user.isAdmin ? "text-green-900" : "text-black"}
-                    >
-                      {user.isAdmin ? "Admin" : "Normal User"}
-                    </td>
-                    <td
-                      style={{ cursor: "pointer" }}
-                      onClick={handleDeleteUser}
-                    >
-                      <img
-                        className="w-6 h-5"
-                        // style={{ width: "20px", height: "20px" }}
-                        src={deleteSvg}
-                        alt="deleteSvg"
-                      />
-                    </td>
-                  </tr>
-                </>
-              );
-            })}
+            {users &&
+              users.map((user) => {
+                return (
+                  <>
+                    <tr>
+                      <th>1</th>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td
+                        className={
+                          user.isAdmin ? "text-green-900" : "text-black"
+                        }
+                      >
+                        {user.isAdmin ? "Admin" : "Normal User"}
+                      </td>
+                      <td
+                        style={{ cursor: "pointer" }}
+                        onClick={handleDeleteUser}
+                      >
+                        <img
+                          className="w-6 h-5"
+                          // style={{ width: "20px", height: "20px" }}
+                          src={deleteSvg}
+                          alt="deleteSvg"
+                        />
+                      </td>
+                    </tr>
+                  </>
+                );
+              })}
           </tbody>
         </table>
       </div>

@@ -27,6 +27,16 @@ export const addBlog = createAsyncThunk("blogs/addBlog", async (blogData) => {
   return res.data;
 });
 
+export const updateBlog = createAsyncThunk("blogs/updateBlog", async (id) => {
+  const res = await axios.put(url + `blogs/${id}`);
+  return res.data;
+});
+
+export const deleteBlog = createAsyncThunk("blogs/deleteBlog", async (id) => {
+  const res = await axios.delete(url + `blogs/${id}`);
+  return res.data;
+});
+
 export const blogSlice = createSlice({
   name: "blogs",
   initialState,
@@ -70,6 +80,34 @@ export const blogSlice = createSlice({
     });
 
     builder.addCase(addBlog.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+
+    //update Blog
+    builder.addCase(updateBlog.pending, (state) => {
+      state.isLoading = true;
+    });
+
+    builder.addCase(updateBlog.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isProductUpdated = action.payload;
+    });
+
+    builder.addCase(updateBlog.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+
+    //deleteBlog
+    builder.addCase(deleteBlog.pending, (state) => {
+      state.isLoading = true;
+    });
+
+    builder.addCase(deleteBlog.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isProductDelted = action.payload;
+    });
+
+    builder.addCase(deleteBlog.rejected, (state, action) => {
       state.error = action.payload;
     });
   },
