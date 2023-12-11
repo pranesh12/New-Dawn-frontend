@@ -22,10 +22,16 @@ export const fetchBlogById = createAsyncThunk(
   }
 );
 
+export const addBlog = createAsyncThunk("blogs/addBlog", async (blogData) => {
+  const res = await axios.post(url + "blogs/createblog", blogData);
+  return res.data;
+});
+
 export const blogSlice = createSlice({
   name: "blogs",
   initialState,
   extraReducers: (builder) => {
+    // fetch all Blogs
     builder.addCase(fetchBlogs.pending, (state) => {
       state.isLoading = true;
     });
@@ -39,6 +45,7 @@ export const blogSlice = createSlice({
       state.error = action.error.message;
     });
 
+    // fetch blog by theri id
     builder.addCase(fetchBlogById.pending, (state) => {
       state.isLoading = true;
     });
@@ -49,6 +56,20 @@ export const blogSlice = createSlice({
     });
 
     builder.addCase(fetchBlogById.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+
+    // add blog
+    builder.addCase(addBlog.pending, (state) => {
+      state.isLoading = true;
+    });
+
+    builder.addCase(addBlog.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isProductAdded = action.payload;
+    });
+
+    builder.addCase(addBlog.rejected, (state, action) => {
       state.error = action.payload;
     });
   },

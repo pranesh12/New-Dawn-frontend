@@ -71,6 +71,9 @@ const AdminLayout = () => {
             <li>
               <Link to="/admin/userlist">User</Link>
             </li>
+            <li>
+              <Link to="/admin/addBlog">Add Blog</Link>
+            </li>
             <li onClick={handleLogOut}>
               <Link>Logout</Link>
             </li>

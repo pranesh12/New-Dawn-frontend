@@ -10,6 +10,8 @@ import AdminLayout from "./components/Layout/AdminLayout";
 import AdminHome from "./features/Admin/AdminHome";
 import BlogList from "./features/Admin/BlogList";
 import UserList from "./features/Admin/UserList";
+import AddBlog from "./features/Admin/AddBlog";
+import UpdateBlog from "./features/Admin/UpdateBlog";
 
 function App() {
   const router = createBrowserRouter([
@@ -50,6 +52,14 @@ function App() {
         {
           path: "/admin/bloglist",
           element: <BlogList />,
+        },
+        {
+          path: "/admin/addBlog",
+          element: <AddBlog />,
+        },
+        {
+          path: "/admin/updateBlog/:id",
+          element: <UpdateBlog />,
         },
       ],
     },
