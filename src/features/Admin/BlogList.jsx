@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { fetchBlogs } from "../blog/blogSlice";
+import { deleteBlog, fetchBlogs } from "../blog/blogSlice";
 import { useDispatch, useSelector } from "react-redux";
 import deleteIcon from "../../assets/delete-2-svgrepo-com.svg";
 import editIcon from "../../assets/edit-1483-svgrepo-com.svg";
+import { Link } from "react-router-dom";
 
 const BlogList = () => {
   const dispatch = useDispatch();
@@ -10,11 +11,15 @@ const BlogList = () => {
     dispatch(fetchBlogs());
   }, [dispatch]);
 
-  const handleDelete = () => {};
-  const handleEdit = () => {};
+  const handleDelete = (id) => {
+    dispatch(deleteBlog(id));
+
+    window.location.replace("http://localhost:5173/admin/bloglist");
+  };
 
   const blogs = useSelector((state) => state.blogs.blogs);
   console.log(blogs);
+
   return (
     <div>
       <div>
@@ -25,7 +30,6 @@ const BlogList = () => {
           <table className="table ">
             <thead>
               <tr>
-                <th></th>
                 <th>Author</th>
                 <th>Title</th>
                 <th>Category</th>
@@ -34,7 +38,6 @@ const BlogList = () => {
                 <th>Read Time</th>
                 <th>Edit </th>
                 <th>Delete </th>
-                <th>Created At</th>
               </tr>
             </thead>
             <tbody>
@@ -43,7 +46,6 @@ const BlogList = () => {
                   return (
                     <>
                       <tr>
-                        <th>1</th>
                         <td>{blog.author}</td>
                         <td>{blog.title}</td>
                         <td>{blog.category}</td>
@@ -51,16 +53,20 @@ const BlogList = () => {
                         <td>
                           <img src={blog.image} alt="blog.title}" />
                         </td>
-                        <td>{blog.readtime}</td>
-                        <td
-                          style={{ cursor: "pointer" }}
-                          onClick={handleDelete}
-                        >
-                          <img className="w-6 h-5" src={editIcon} alt="" />
+                        <td>{blog.readtime} miniute</td>
+                        <td style={{ cursor: "pointer" }}>
+                          <Link to={`/admin/updateBlog/${blog._id}`}>
+                            <img
+                              className="w-6 h-5"
+                              src={editIcon}
+                              alt="edit Icon"
+                            />
+                          </Link>
                         </td>
 
-                        <td style={{ cursor: "pointer" }} onClick={handleEdit}>
+                        <td style={{ cursor: "pointer" }}>
                           <img
+                            onClick={() => handleDelete(blog._id)}
                             className="w-6 h-5"
                             src={deleteIcon}
                             alt="deleteSvg"

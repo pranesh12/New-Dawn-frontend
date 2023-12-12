@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addBlog, fetchBlogById } from "../blog/blogSlice";
+import { fetchBlogById, updateBlog } from "../blog/blogSlice";
 
 const UpdateBlog = () => {
   const dispatch = useDispatch();
+
   const { id } = useParams();
 
-  const singleBlog = useSelector(state.blogs.singleBlog);
-  console.log(singleBlog);
+  const singleBlog = useSelector((state) => state.blogs.singleBlog);
 
   const [blog, setBlog] = useState({
     author: "",
@@ -17,6 +17,7 @@ const UpdateBlog = () => {
     content: "",
     image: "",
     readtime: "",
+    id,
   });
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const UpdateBlog = () => {
           content: singleBlog?.content,
           image: singleBlog?.image,
           readtime: singleBlog?.readtime,
+          id,
         });
       } else {
         dispatch(fetchBlogById(id));
@@ -39,22 +41,20 @@ const UpdateBlog = () => {
   }, [id, dispatch, singleBlog]);
 
   const handleOnChange = (e) => {
-    setProduct({ ...product, [e.target.name]: e.target.value });
+    setBlog({ ...blog, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProduct(id, product));
+    dispatch(updateBlog(blog));
   };
-
-  console.log(blog.category);
 
   return (
     <div>
       <div className=" mx-auto mt-5 prose">
         <div className="flex ">
           <div className="">
-            <h2>Add Blog</h2>
+            <h2>Update Blog</h2>
             <form onSubmit={handleSubmit}>
               <input
                 value={blog.author}
@@ -116,11 +116,12 @@ const UpdateBlog = () => {
               />
 
               <textarea
+                value={blog.content}
                 onChange={handleOnChange}
                 required
                 name="content"
                 placeholder="Content"
-                className="textarea textarea-accent textarea-lg w-full"
+                className="textarea textarea-accent textarea-lg w-full mb-4"
               ></textarea>
 
               <button

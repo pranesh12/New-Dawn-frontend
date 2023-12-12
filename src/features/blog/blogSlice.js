@@ -27,8 +27,18 @@ export const addBlog = createAsyncThunk("blogs/addBlog", async (blogData) => {
   return res.data;
 });
 
-export const updateBlog = createAsyncThunk("blogs/updateBlog", async (id) => {
-  const res = await axios.put(url + `blogs/${id}`);
+export const updateBlog = createAsyncThunk("blogs/updateBlog", async (blog) => {
+  const { id } = blog;
+  const newBlog = {
+    author: blog.author,
+    title: blog.title,
+    category: blog.category,
+    content: blog.content,
+    image: blog.image,
+    readtime: blog.readtime,
+  };
+
+  const res = await axios.put(url + `blogs/${id}`, newBlog);
   return res.data;
 });
 

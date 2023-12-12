@@ -91,7 +91,7 @@ const AddBlog = () => {
                 required
                 name="content"
                 placeholder="Content"
-                className="textarea textarea-accent textarea-lg w-full"
+                className="textarea textarea-accent textarea-lg w-full mb-4"
               ></textarea>
 
               <button

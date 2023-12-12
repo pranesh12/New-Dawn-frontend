@@ -30,6 +30,12 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+export const deleteUser = createAsyncThunk("auth/loginUser", async (data) => {
+  const { id, email } = data;
+  const res = await axios.delete(url + `delete?id=${id}&email=${email}`);
+  return res.data;
+});
+
 export const getAllUser = createAsyncThunk("auth/getAllUser", async (email) => {
   const res = await axios.get(url + `allusers?email=${email}`);
   return res.data;

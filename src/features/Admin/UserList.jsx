@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { getAllUser } from "../auth/authSlice";
+import { deleteUser, getAllUser } from "../auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import deleteSvg from "../../assets/delteLogo.svg";
+
 const UserList = () => {
   const dispatch = useDispatch();
 
@@ -9,10 +10,18 @@ const UserList = () => {
     dispatch(getAllUser(email));
   }, [dispatch]);
   const email = useSelector((state) => state.auth.currentUser.email);
+
   const users = useSelector((state) => state.auth.userList);
+
   console.log(users);
 
-  const handleDeleteUser = () => {};
+  const handleDeleteUser = (id) => {
+    const userData = {
+      id,
+      email,
+    };
+    dispatch(deleteUser(userData));
+  };
 
   return (
     <div>
@@ -21,7 +30,6 @@ const UserList = () => {
         <table className="table ">
           <thead>
             <tr>
-              <th></th>
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
@@ -34,7 +42,6 @@ const UserList = () => {
                 return (
                   <>
                     <tr>
-                      <th>1</th>
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td
@@ -44,11 +51,9 @@ const UserList = () => {
                       >
                         {user.isAdmin ? "Admin" : "Normal User"}
                       </td>
-                      <td
-                        style={{ cursor: "pointer" }}
-                        onClick={handleDeleteUser}
-                      >
+                      <td style={{ cursor: "pointer" }}>
                         <img
+                          onClick={() => handleDeleteUser(user._id)}
                           className="w-6 h-5"
                           // style={{ width: "20px", height: "20px" }}
                           src={deleteSvg}
