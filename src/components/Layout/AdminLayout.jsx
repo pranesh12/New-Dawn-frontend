@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
@@ -39,12 +38,12 @@ const AdminLayout = () => {
             <div class="flex-1 px-2 mx-2">Admin Pannel</div>
             <div class="flex-none hidden lg:block">
               <ul class="menu menu-horizontal">
-                <li>
+                {/* <li>
                   <button>Navbar Item 1</button>
                 </li>
                 <li>
                   <button>Navbar Item 2</button>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -63,7 +62,7 @@ const AdminLayout = () => {
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {/* Sidebar Link here */}
             <li>
-              <Link to="/admin">DashBoard</Link>
+              <Link>DashBoard</Link>
             </li>
             <li>
               <Link to="/admin/bloglist">Blogs</Link>

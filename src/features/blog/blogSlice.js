@@ -87,6 +87,7 @@ export const blogSlice = createSlice({
     builder.addCase(addBlog.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isProductAdded = action.payload;
+      window.location.replace("http://localhost:5173/admin/bloglist");
     });
 
     builder.addCase(addBlog.rejected, (state, action) => {
@@ -101,6 +102,7 @@ export const blogSlice = createSlice({
     builder.addCase(updateBlog.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isProductUpdated = action.payload;
+      window.location.replace("http://localhost:5173/admin/bloglist");
     });
 
     builder.addCase(updateBlog.rejected, (state, action) => {

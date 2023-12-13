@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "./authSlice";
 import { Link } from "react-router-dom";
 
 const LoginView = () => {
   const dispatch = useDispatch();
-  const userdata = useSelector((state) => console.log(state));
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",

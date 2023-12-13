@@ -20,13 +20,9 @@ const AddBlog = () => {
     // setBlog({ author: "", title: "", category: "", content: "", image: "" });
   };
 
-  console.log(blog);
-
   const handleOnChange = (e) => {
     setBlog({ ...blog, [e.target.name]: e.target.value });
   };
-
-  console.log(blog.category);
 
   return (
     <div>

@@ -10,10 +10,7 @@ const UserList = () => {
     dispatch(getAllUser(email));
   }, [dispatch]);
   const email = useSelector((state) => state.auth.currentUser.email);
-
   const users = useSelector((state) => state.auth.userList);
-
-  console.log(users);
 
   const handleDeleteUser = (id) => {
     const userData = {
@@ -21,6 +18,7 @@ const UserList = () => {
       email,
     };
     dispatch(deleteUser(userData));
+    window.location.replace("http://localhost:5173/admin/userlist");
   };
 
   return (
@@ -46,7 +44,7 @@ const UserList = () => {
                       <td>{user.email}</td>
                       <td
                         className={
-                          user.isAdmin ? "text-green-900" : "text-black"
+                          user.isAdmin ? "text-emerald-400 " : "text-black"
                         }
                       >
                         {user.isAdmin ? "Admin" : "Normal User"}

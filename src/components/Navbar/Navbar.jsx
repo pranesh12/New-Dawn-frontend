@@ -4,17 +4,16 @@ import { logout } from "../../features/auth/authSlice";
 
 const Navbar = () => {
   const user = useSelector((state) => state.auth.currentUser);
-  console.log(user);
   const dispatch = useDispatch();
   const handleLogout = (e) => {
     dispatch(logout());
   };
 
   return (
-    <div className="navbar bg-base-100  top-0 w-full">
+    <div className="navbar bg-base-100  top-0 w-full ">
       <div className="flex flex-1 md:gap-1 lg:gap-2 sm:flex-column">
-        <Link to="/" className="btn btn-ghost text-lg">
-          Blog Site
+        <Link to="/" className="btn btn-ghost text-sm">
+          New Dawn
         </Link>
         <Link to="/auth/login" className="btn btn-ghost text-sm">
           Auth

@@ -18,12 +18,11 @@ const BlogList = () => {
   };
 
   const blogs = useSelector((state) => state.blogs.blogs);
-  console.log(blogs);
 
   return (
     <div>
       <div>
-        <h1>Blogs List</h1>
+        <h1 className="text-center my-5 font-medium">Blogs List</h1>
       </div>
       {blogs && (
         <div className="overflow-x-auto">
@@ -49,7 +48,9 @@ const BlogList = () => {
                         <td>{blog.author}</td>
                         <td>{blog.title}</td>
                         <td>{blog.category}</td>
-                        <td>{blog.content}</td>
+                        <td className="overflow-y-auto  block">
+                          {blog.content}
+                        </td>
                         <td>
                           <img src={blog.image} alt="blog.title}" />
                         </td>
