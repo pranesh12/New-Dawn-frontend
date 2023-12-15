@@ -88,6 +88,10 @@ const UpdateBlog = () => {
                 </option>
                 <option value="love">love</option>
                 <option value="science fiction">Science Fiction</option>
+                <option value="travel">Travel</option>
+                <option value="life">Holiday</option>
+                <option value="life">Life</option>
+                <option value="weather">Weather</option>
                 <option value="geography">Geography</option>
                 <option value="economy">Economy</option>
                 <option value="gaming">Gaming</option>

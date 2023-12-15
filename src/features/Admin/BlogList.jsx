@@ -48,8 +48,10 @@ const BlogList = () => {
                         <td>{blog.author}</td>
                         <td>{blog.title}</td>
                         <td>{blog.category}</td>
-                        <td className="overflow-y-auto  block">
-                          {blog.content}
+                        <td>
+                          <div className="h-36 overflow-hidden  hover:overflow-y-scroll">
+                            {blog.content}
+                          </div>
                         </td>
                         <td>
                           <img src={blog.image} alt="blog.title}" />

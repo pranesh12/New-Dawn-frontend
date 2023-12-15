@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addBlog } from "../blog/blogSlice";
 
 const AddBlog = () => {
@@ -17,7 +16,6 @@ const AddBlog = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addBlog(blog));
-    // setBlog({ author: "", title: "", category: "", content: "", image: "" });
   };
 
   const handleOnChange = (e) => {
@@ -60,10 +58,15 @@ const AddBlog = () => {
                 </option>
                 <option value="love">love</option>
                 <option value="science fiction">Science Fiction</option>
+                <option value="travel">Travel</option>
+                <option value="life">Holiday</option>
+                <option value="life">Life</option>
+                <option value="weather">Weather</option>
                 <option value="geography">Geography</option>
                 <option value="economy">Economy</option>
                 <option value="gaming">Gaming</option>
                 <option value="war">War</option>
+
                 <option value="other">Other</option>
               </select>
               <input
