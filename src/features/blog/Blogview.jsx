@@ -9,6 +9,7 @@ const Blogview = () => {
   useEffect(() => {
     dispatch(fetchBlogs());
   }, [dispatch]);
+  console.log(isLoading);
   return (
     <div>
       <div className="flex flex-wrap justify-center mt-10 lg:Space between">

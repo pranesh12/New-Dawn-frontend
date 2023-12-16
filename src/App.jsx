@@ -12,8 +12,19 @@ import BlogList from "./features/Admin/BlogList";
 import UserList from "./features/Admin/UserList";
 import AddBlog from "./features/Admin/AddBlog";
 import UpdateBlog from "./features/Admin/UpdateBlog";
+import Spinner from "./components/Spinner/Spinner";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -64,11 +75,7 @@ function App() {
       ],
     },
   ]);
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+  return <>{loading ? <Spinner /> : <RouterProvider router={router} />}</>;
 }
 
 export default App;

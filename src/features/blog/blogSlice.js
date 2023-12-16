@@ -4,7 +4,6 @@ import { url } from "../../api/api";
 
 const initialState = {
   blogs: [],
-  isLoading: false,
   error: null,
   singleBlog: null,
 };
@@ -77,6 +76,7 @@ export const blogSlice = createSlice({
 
     builder.addCase(fetchBlogById.rejected, (state, action) => {
       state.error = action.payload;
+      state.isLoading = false;
     });
 
     // add blog

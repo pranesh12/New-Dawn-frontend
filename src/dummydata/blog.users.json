@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "65715c2aaa7b1abf08c821e1"
+  },
+  "name": "pranesh",
+  "email": "p@p.com",
+  "password": "$2b$12$uJOXqxjsQlMhNqam2gLwpehIDiAMQQFu2zkoEb3orxWdGenRZT0F.",
+  "isAdmin": true,
+  "createdAt": {
+    "$date": "2023-12-07T05:46:18.509Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-07T05:46:18.509Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65743b942065a123da6d5917"
+  },
+  "name": "boby",
+  "email": "b@b.com",
+  "password": "$2b$12$XQ.kJDnZ4U4EtbEabuzTB..6RuvxUplCaR8Gu/KctgEivz1G7Zx0G",
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2023-12-09T10:04:04.258Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-09T10:04:04.258Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65743ba42065a123da6d591c"
+  },
+  "name": "cat",
+  "email": "c@c.com",
+  "password": "$2b$12$sxblM4OmsxGUUFUDTN2DQuSVdOvb3dizQhystIZ65t0SfXEz1OhBm",
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2023-12-09T10:04:20.437Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-09T10:04:20.437Z"
+  },
+  "__v": 0
+}]
