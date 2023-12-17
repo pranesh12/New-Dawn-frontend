@@ -10,10 +10,6 @@ const SingleBlogDetails = () => {
   const blog = useSelector((state) => state.blogs?.singleBlog);
   const loading = useSelector((state) => state.blogs?.isLoading);
 
-  console.log(loading);
-  // const { author, category, content, created_at, image, readtime, title } =
-  //   blog;
-
   useEffect(() => {
     dispatch(fetchBlogById(id));
     window.scrollTo(0, 0);

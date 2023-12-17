@@ -12,19 +12,9 @@ import BlogList from "./features/Admin/BlogList";
 import UserList from "./features/Admin/UserList";
 import AddBlog from "./features/Admin/AddBlog";
 import UpdateBlog from "./features/Admin/UpdateBlog";
-import Spinner from "./components/Spinner/Spinner";
-import { useEffect, useState } from "react";
+import AdminPrivateRoute from "./components/AdminPrivateRoute/AdminPrivateRoute";
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -54,28 +44,52 @@ function App() {
       children: [
         {
           path: "/admin",
-          element: <AdminHome />,
+          element: (
+            <AdminPrivateRoute>
+              <AdminHome />
+            </AdminPrivateRoute>
+          ),
         },
         {
           path: "/admin/userlist",
-          element: <UserList />,
+          element: (
+            <AdminPrivateRoute>
+              <UserList />
+            </AdminPrivateRoute>
+          ),
         },
         {
           path: "/admin/bloglist",
-          element: <BlogList />,
+          element: (
+            <AdminPrivateRoute>
+              <BlogList />
+            </AdminPrivateRoute>
+          ),
         },
         {
           path: "/admin/addBlog",
-          element: <AddBlog />,
+          element: (
+            <AdminPrivateRoute>
+              <AddBlog />
+            </AdminPrivateRoute>
+          ),
         },
         {
           path: "/admin/updateBlog/:id",
-          element: <UpdateBlog />,
+          element: (
+            <AdminPrivateRoute>
+              <UpdateBlog />
+            </AdminPrivateRoute>
+          ),
         },
       ],
     },
   ]);
-  return <>{loading ? <Spinner /> : <RouterProvider router={router} />}</>;
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;
