@@ -18,7 +18,9 @@ const UserList = () => {
       email,
     };
     dispatch(deleteUser(userData));
-    window.location.replace("http://localhost:5173/admin/userlist");
+    window.location.replace(
+      "https://new-dawn-server.vercel.app/admin/userlist"
+    );
   };
 
   return (

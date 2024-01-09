@@ -14,7 +14,9 @@ const BlogList = () => {
   const handleDelete = (id) => {
     dispatch(deleteBlog(id));
 
-    window.location.replace("http://localhost:5173/admin/bloglist");
+    window.location.replace(
+      "https://new-dawn-server.vercel.app/admin/bloglist"
+    );
   };
 
   const blogs = useSelector((state) => state.blogs.blogs);
